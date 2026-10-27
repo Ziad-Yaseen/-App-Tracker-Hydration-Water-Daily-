@@ -23,8 +23,6 @@
 - 📊 See your progress for the day
 - 📱 Cross-platform: Android, iOS, Web, Windows, macOS, and Linux
 
-> Update this list as you add or change features.
-
 ## 📸 Screenshots
 
 <p align="center">
@@ -33,11 +31,9 @@
   <img src="screenshots/progress.png" width="250" alt="Progress" />
 </p>
 
-| Home | Add Water | Progress |
-|:----:|:---------:|:--------:|
-| ![Home](screenshots/home.png) | ![Add Water](screenshots/add_water.png) | ![Progress](screenshots/progress.png) |
-
-> To add your own: create a `screenshots/` folder in the repo root, drop your images in, and update the file names above.
+|             Home              |             Add Water             |
+| :---------------------------: | :-------------------------------: |
+| ![Home](screenshots/home.png) | ![Result](screenshots/result.png) |
 
 ## 🛠️ Tech Stack
 
