@@ -27,8 +27,7 @@
 
 <p align="center">
   <img src="screenshots/home.png" width="250" alt="Home screen" />
-  <img src="screenshots/add_water.png" width="250" alt="Add water" />
-  <img src="screenshots/progress.png" width="250" alt="Progress" />
+  <img src="screenshots/add_water.png" width="250" alt="Result" />
 </p>
 
 |             Home              |             Add Water             |
