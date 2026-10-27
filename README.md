@@ -25,10 +25,11 @@
 
 ## 📸 Screenshots
 
+<!--
 <p align="center">
   <img src="screenshots/home.png" width="250" alt="Home screen" />
   <img src="screenshots/add_water.png" width="250" alt="Result" />
-</p>
+</p> -->
 
 |             Home              |             Add Water             |
 | :---------------------------: | :-------------------------------: |
