@@ -31,7 +31,7 @@
   <img src="screenshots/add_water.png" width="250" alt="Result" />
 </p> -->
 
-|             Home              |             Add Water             |
+|             Home              |              Result               |
 | :---------------------------: | :-------------------------------: |
 | ![Home](screenshots/home.png) | ![Result](screenshots/result.png) |
 
