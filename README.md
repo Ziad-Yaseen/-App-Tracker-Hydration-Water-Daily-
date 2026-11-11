@@ -1,45 +1,92 @@
 <h1 align="center">💧 Water Hydration Tracker</h1>
 
 <p align="center">
-  A simple Flutter app to track your daily water intake and build a healthy hydration habit.
+  A clean Flutter app that estimates your daily water intake from your weight and activity level.
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Flutter-02569B?logo=flutter&logoColor=white" alt="Flutter" />
-  <img src="https://img.shields.io/badge/Dart-0175C2?logo=dart&logoColor=white" alt="Dart" />
-  <img src="https://img.shields.io/badge/Platforms-Android%20%7C%20iOS%20%7C%20Web%20%7C%20Desktop-blue" alt="Platforms" />
+<img src="https://img.shields.io/badge/Flutter-02569B?logo=flutter&logoColor=white" alt="Flutter" />
+<img src="https://img.shields.io/badge/Dart-0175C2?logo=dart&logoColor=white" alt="Dart" />
+<img src="https://img.shields.io/badge/State-Bloc%20(Cubit)-blueviolet" alt="Cubit" />
+<img src="https://img.shields.io/badge/Platforms-Android%20%7C%20iOS%20%7C%20Web%20%7C%20Desktop-blue" alt="Platforms" />
 </p>
 
 ---
 
 ## 📖 About
 
-**Water Hydration Tracker** helps you stay on top of how much water you drink every day. Set a daily goal, log each glass, and see your progress at a glance.
+**Water Hydration Tracker** asks for a few simple inputs and tells you roughly how many litres of water you should drink per day, along with short guidance based on the result.
+
+> ⚠️ The result is an **educational estimate only** and is not medical advice. Real needs vary from person to person.
 
 ## ✨ Features
 
-- 🎯 Set and follow a daily water intake goal
-- ➕ Quickly log the water you drink
-- 📊 See your progress for the day
+- 🧮 Instant daily water estimate in litres
+- 🚻 Gender selection
+- 🏃 Activity slider (0–8 hours/day)
+- ⚖️ Weight (30–200 kg) and age (10–100 years) counters
+- 💬 Guidance message based on the estimate level (low / average / high)
+- ⚠️ Validation: a message appears if no gender is selected
+- 🌙 Dark theme (Material 3)
 - 📱 Cross-platform: Android, iOS, Web, Windows, macOS, and Linux
 
 ## 📸 Screenshots
-
-<!--
-<p align="center">
-  <img src="screenshots/home.png" width="250" alt="Home screen" />
-  <img src="screenshots/add_water.png" width="250" alt="Result" />
-</p> -->
 
 |             Home              |              Result               |
 | :---------------------------: | :-------------------------------: |
 | ![Home](screenshots/home.png) | ![Result](screenshots/result.png) |
 
+## 🧪 How the Estimate Works
+
+```
+litres = (weight_kg × 35 ml + activity_hours × 250 ml) / 1000
+```
+
+| Result       | Level   |
+| :----------- | :------ |
+| < 2 L        | Low     |
+| 2 – 3 L      | Average |
+| > 3 L        | High    |
+
+> Age and gender are collected in the UI but do not affect the formula yet (see the [Roadmap](#️-roadmap)).
+
 ## 🛠️ Tech Stack
 
 - [Flutter](https://flutter.dev/) (Dart SDK `^3.13.5`)
-- Material Design
-- `cupertino_icons`
+- [flutter_bloc](https://pub.dev/packages/flutter_bloc) (Cubit) for state management
+- [equatable](https://pub.dev/packages/equatable) for value equality
+- Material 3
+
+## 🏗️ Architecture
+
+The project is organized **feature-first**, with shared code in `core/`.
+
+- **State:** a single immutable `WaterState` (`Equatable`) that exposes `litres` and `level` as getters.
+- **Cubit:** `WaterCubit` holds state logic only (increment/decrement with limits, gender, activity). No UI text.
+- **UI:** each section uses `BlocSelector`, so it rebuilds only when its own value changes.
+- **Reusable widgets:** `AppCard`, `CounterCard`, `BottomButton`, `CustomSnackBar`.
+
+## 📁 Project Structure
+
+```
+lib/
+├── main.dart
+├── app.dart
+├── core/
+│   ├── components/     # AppCard, CounterCard, BottomButton, CustomSnackBar
+│   ├── constants/      # AppColors
+│   ├── helpers/        # WaterCalc
+│   └── styles/         # AppTheme
+└── features/
+    ├── home/
+    │   ├── models/     # GenderType, HydrationLevel
+    │   ├── cubit/      # WaterCubit, WaterState
+    │   ├── screens/    # HomeView
+    │   └── widgets/    # GenderRow, ActivitySlider, AgeWeightRow
+    └── result/
+        ├── screens/    # ResultView
+        └── widgets/    # HydrationWidget, GuidanceWidget, JustEducation, UserInfos
+```
 
 ## 🚀 Getting Started
 
@@ -72,27 +119,14 @@ flutter build ios      # iOS
 flutter build web      # Web
 ```
 
-## 📁 Project Structure
-
-```
-.
-├── lib/          # Dart source code
-├── test/         # Tests
-├── android/      # Android platform files
-├── ios/          # iOS platform files
-├── web/          # Web platform files
-├── windows/      # Windows platform files
-├── macos/        # macOS platform files
-├── linux/        # Linux platform files
-└── pubspec.yaml  # Dependencies and project config
-```
-
 ## 🗺️ Roadmap
 
-- [ ] Persistent storage for daily history
+- [ ] Use age and gender in the formula
+- [ ] Unit tests for `WaterCalc` and `WaterCubit`
+- [ ] Log daily water intake with persistent history
 - [ ] Reminder notifications
 - [ ] Weekly and monthly statistics
-- [ ] Dark mode
+- [ ] Light theme and localization (Arabic)
 
 ## 🤝 Contributing
 
