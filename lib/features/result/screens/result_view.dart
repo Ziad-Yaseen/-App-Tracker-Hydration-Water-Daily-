@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:water_hydration_tracker/core/helpers/water_calc.dart';
 import 'package:water_hydration_tracker/features/result/widgets/guidance_widget.dart';
 import 'package:water_hydration_tracker/features/result/widgets/hydration_widget.dart';

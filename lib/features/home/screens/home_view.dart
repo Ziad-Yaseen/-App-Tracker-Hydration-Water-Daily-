@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:water_hydration_tracker/core/components/custom_snack_bar.dart';
 import 'package:water_hydration_tracker/core/constants/app_colors.dart';
 import 'package:water_hydration_tracker/features/home/widgets/activity_slider.dart';
